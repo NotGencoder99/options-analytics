@@ -1,17 +1,14 @@
-# OptionPulse — Options Analytics
+# OptionPulse V3
 
-GitHub Pages static prototype for an options analytics platform.
-
-### Included
-- NIFTY, BANK NIFTY and FINNIFTY dashboard
-- Interactive option-chain filters
-- OI, change-in-OI, volume, IV and LTP columns
-- PCR and Max Pain panels
-- OI comparison charts
-- Payoff and PCR calculators
+Static options analytics prototype with:
+- NIFTY / BANK NIFTY / FINNIFTY dashboard
+- Option chain filters
+- OI analytics
+- Strategy Builder with multi-position expiry payoff visualization
+- Illustrative breakeven display
 - Dark mode and responsive layout
 
-**Important:** all market values are illustrative demo values. This prototype does not provide live market data and should not be used for trading decisions.
+**All values are illustrative demo data. This is not live market data or investment advice.**
 
-### Roadmap
-Licensed market-data integration → Python/FastAPI backend → historical storage → advanced analytics → strategy builder → authentication/watchlists.
+## Deploy
+GitHub Pages can serve `index.html` from the `main` branch root.

@@ -1,8 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OptionPulse — Options Analytics</title><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="brand"><b>O</b><div><strong>OptionPulse</strong><small>OPTIONS INTELLIGENCE</small></div></div><nav><button class="nav active" data-page="dashboard">Dashboard</button><button class="nav" data-page="chain">Option Chain</button><button class="nav" data-page="analytics">Analytics</button><button class="nav" data-page="tools">Tools</button></nav><button id="theme">☼</button><button class="login">Login / Register</button></header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OptionPulse — Options Analytics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">O</div><div><strong>OptionPulse</strong><span>OPTIONS INTELLIGENCE</span></div></div>
+  <nav>
+    <button class="nav active" data-page="dashboard">Dashboard</button>
+    <button class="nav" data-page="chain">Option Chain</button>
+    <button class="nav" data-page="analytics">Analytics</button>
+    <button class="nav" data-page="strategy">Strategy Builder</button>
+  </nav>
+  <button id="theme" class="theme">☼</button>
+</header>
+
 <main>
-<section id="dashboard" class="page active"><div class="hero"><div><label>LIVE WORKSPACE</label><h1>Options Market Dashboard</h1><p>Track index levels, open interest, PCR and market structure.</p></div><div class="switch"><button class="idx active" data-i="NIFTY">NIFTY</button><button class="idx" data-i="BANKNIFTY">BANK NIFTY</button><button class="idx" data-i="FINNIFTY">FINNIFTY</button></div></div><div id="cards" class="cards"></div><div class="twocol"><article><h2>OI Snapshot <em>● Demo data</em></h2><div id="bars" class="bars"></div></article><article><h2>Key Levels</h2><div id="levels" class="levels"></div></article></div></section>
-<section id="chain" class="page"><div class="hero"><div><label>LIVE WORKSPACE</label><h1>Option Chain</h1><p>Strike-wise calls, puts, OI, volume, IV and LTP.</p></div><div class="switch"><button class="idx active" data-i="NIFTY">NIFTY</button><button class="idx" data-i="BANKNIFTY">BANK NIFTY</button><button class="idx" data-i="FINNIFTY">FINNIFTY</button></div></div><div class="toolbar"><select id="expiry"><option>Weekly Expiry</option><option>Next Weekly</option><option>Monthly Expiry</option></select><div class="filters"><button class="f active" data-f="all">All Strikes</button><button class="f" data-f="near">Near ATM</button><button class="f" data-f="itm">ITM</button><button class="f" data-f="otm">OTM</button></div><span>● Demo snapshot</span></div><div class="table"><table><thead><tr><th colspan="5">CALLS</th><th>STRIKE</th><th colspan="5">PUTS</th></tr><tr><th>OI</th><th>CHG OI</th><th>VOL</th><th>IV</th><th>LTP</th><th>PRICE</th><th>LTP</th><th>IV</th><th>VOL</th><th>CHG OI</th><th>OI</th></tr></thead><tbody id="rows"></tbody></table></div></section>
-<section id="analytics" class="page"><div class="hero"><div><label>ANALYTICS</label><h1>OI & Market Analytics</h1><p>Explore common options metrics using the demo chain.</p></div></div><div id="metrics" class="metrics"></div><div class="twocol"><article><h2>Call vs Put OI</h2><div id="oi" class="chart"></div></article><article><h2>Change in OI</h2><div id="chg" class="chart"></div></article></div><div class="twocol"><article><h2>PCR Trend</h2><svg class="line" viewBox="0 0 600 220"><polyline points="10,170 120,140 230,155 340,110 450,125 590,90" fill="none" stroke="#2878e8" stroke-width="5"/><line x1="10" y1="175" x2="590" y2="175" stroke="#dce4ef"/></svg></article><article><h2>Max Pain</h2><div id="pain" class="pain"></div></article></div></section>
-<section id="tools" class="page"><div class="hero"><div><label>TRADING TOOLS</label><h1>Strategy & Payoff Tools</h1><p>Simple calculators for learning and scenario analysis.</p></div></div><div class="twocol"><article class="tool"><h2>Position Payoff</h2><label>Position <select id="type"><option value="call">Long Call</option><option value="put">Long Put</option></select></label><label>Strike <input id="strike" type="number" value="24800"></label><label>Premium <input id="premium" type="number" value="120"></label><label>Spot at Expiry <input id="spot" type="number" value="24900"></label><button id="calc" class="primary">Calculate</button><div id="payoff" class="result"></div></article><article class="tool"><h2>PCR Calculator</h2><label>Call OI <input id="coi" type="number" value="8.42"></label><label>Put OI <input id="poi" type="number" value="6.84"></label><button id="pcr" class="primary">Calculate PCR</button><div id="pcrout" class="result"></div></article></div></section>
-</main><footer>OptionPulse • Static analytics prototype • Demo values only</footer><script src="script.js"></script></body></html>
+<section id="dashboard" class="page active">
+  <div class="hero"><div><span class="eyebrow">OPTIONS WORKSPACE</span><h1>Market Dashboard</h1><p>Explore index levels and options structure with illustrative data.</p></div>
+  <div class="switch"><button class="idx active" data-index="NIFTY">NIFTY</button><button class="idx" data-index="BANKNIFTY">BANK NIFTY</button><button class="idx" data-index="FINNIFTY">FINNIFTY</button></div></div>
+  <div id="cards" class="cards"></div>
+  <div class="grid"><div class="panel"><h2>Market Levels</h2><div id="levels" class="levels"></div></div><div class="panel"><h2>OI Balance</h2><div id="balance" class="balance"></div></div></div>
+</section>
+
+<section id="chain" class="page">
+  <div class="hero"><div><span class="eyebrow">LIVE WORKSPACE</span><h1>Option Chain</h1><p>Strike-wise calls, puts, OI, volume and IV.</p></div></div>
+  <div class="toolbar"><select><option>Weekly Expiry</option><option>Next Weekly</option><option>Monthly Expiry</option></select><div class="filters"><button class="f active" data-filter="all">All</button><button class="f" data-filter="near">Near ATM</button><button class="f" data-filter="itm">ITM</button><button class="f" data-filter="otm">OTM</button></div></div>
+  <div class="tablebox"><table><thead><tr><th colspan="5">CALLS</th><th>STRIKE</th><th colspan="5">PUTS</th></tr><tr><th>OI</th><th>CHG OI</th><th>VOL</th><th>IV</th><th>LTP</th><th>PRICE</th><th>LTP</th><th>IV</th><th>VOL</th><th>CHG OI</th><th>OI</th></tr></thead><tbody id="chain"></tbody></table></div>
+</section>
+
+<section id="analytics" class="page">
+  <div class="hero"><div><span class="eyebrow">ANALYTICS</span><h1>Options Analytics</h1><p>Visualize open interest and market structure.</p></div></div>
+  <div id="metrics" class="metrics"></div>
+  <div class="grid"><div class="panel"><h2>Call vs Put OI</h2><div id="oiChart" class="chart"></div></div><div class="panel"><h2>Change in OI</h2><div id="chgChart" class="chart"></div></div></div>
+</section>
+
+<section id="strategy" class="page">
+  <div class="hero"><div><span class="eyebrow">TRADING TOOL</span><h1>Strategy Builder</h1><p>Build simple option positions and inspect an illustrative expiry payoff.</p></div></div>
+  <div class="strategy-layout">
+    <div class="panel">
+      <h2>Add Position</h2>
+      <div class="form">
+        <label>Type<select id="type"><option value="call">Call</option><option value="put">Put</option></select></label>
+        <label>Side<select id="side"><option value="long">Buy</option><option value="short">Sell</option></select></label>
+        <label>Strike<input id="strike" type="number" value="24800"></label>
+        <label>Premium<input id="premium" type="number" value="120"></label>
+        <label>Quantity<input id="qty" type="number" value="1" min="1"></label>
+        <button id="add" class="primary">Add Position</button>
+      </div>
+      <div id="positions" class="positions"></div>
+      <button id="clear" class="secondary">Clear Strategy</button>
+    </div>
+    <div class="panel"><h2>Expiry Payoff</h2><div id="payoff" class="payoff"></div><div id="summary" class="summary"></div></div>
+  </div>
+  <p class="notice">Educational prototype only. Values are illustrative and are not live market data or investment advice.</p>
+</section>
+</main>
+<footer>OptionPulse • Static options analytics prototype • Demo values only</footer>
+<script src="script.js"></script>
+</body>
+</html>
